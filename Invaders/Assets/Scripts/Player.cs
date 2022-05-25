@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //first weapon
     private void Shoot()
     {
         Instantiate(this.weapon, this.transform.position, Quaternion.identity); 

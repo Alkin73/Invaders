@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectiles : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
-    public GameObject projectile;
+    public GameObject enemyProjectile;
 
-    public int damage = 40;
-    public int speed = 5;
+    public int speed = -5;
     public void Update()
     {
         transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
@@ -15,14 +14,14 @@ public class PlayerProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
-            Destroy(projectile);           
+            Destroy(enemyProjectile);
         }
         else if (collision.gameObject.tag == "Border")
         {
-            Destroy(projectile);
+            Destroy(enemyProjectile);
         }
     }
 }
