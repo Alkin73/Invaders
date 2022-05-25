@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float projSpeed = 5;
 
     public void Update()
-    {
+    {    
         EnemyShooting();
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public GameObject enemyProjectile;
+    Vector2 respawn = new Vector2(0, -4.45f);
 
     public int speed = -5;
     public void Update()
@@ -16,8 +17,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.transform.position = respawn;
             Destroy(enemyProjectile);
+            GameManager.lives--;
         }
         else if (collision.gameObject.tag == "Border")
         {
