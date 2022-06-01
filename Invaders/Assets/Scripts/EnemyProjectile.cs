@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public GameObject enemyProjectile;
-    public AmirShields Shield;
+    Vector2 respawn = new Vector2(0, -4.45f);
+
     public int speed = -5;
     public void Update()
     {
@@ -16,20 +17,13 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (Shield) //not finished , figuring out how to build the condition for checking if player is shielded or not (getting component from AmirShields for reference) [comment by amir]
-            {
-
-            }
-            else
-            {
-                Destroy(collision.gameObject);
-                Destroy(enemyProjectile);
-            }   
+            collision.gameObject.transform.position = respawn;
+            Destroy(enemyProjectile);
+            GameManager.lives--;
         }
         else if (collision.gameObject.tag == "Border")
         {
             Destroy(enemyProjectile);
         }
     }
-
 }
