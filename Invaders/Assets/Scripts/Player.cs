@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         {
             ShootFirstWeapon();
         }
-        else
+        else if(Input.GetKeyDown(KeyCode.Space) && isOnSecondWeapon == true)
         {
             ShootSecondWeapon();
         }
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         {
             isOnSecondWeapon = true;
         }
-        else
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && isOnSecondWeapon == true)
         {
             isOnSecondWeapon = false;
         }
