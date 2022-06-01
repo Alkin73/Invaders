@@ -5,23 +5,50 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public PlayerProjectiles weapon;
+    public PlayerProjectiles weapon1;
+    public PlayerProjectiles weapon2;
 
     public float horizontalSpeed = 2.0f;
     public float edge = 0;
 
+    public bool isOnSecondWeapon;
+
+    public void Start()
+    {
+        isOnSecondWeapon = false;
+    }
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isOnSecondWeapon == false)
         {
-            Shoot();
+            ShootFirstWeapon();
+        }
+        else
+        {
+            ShootSecondWeapon();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isOnSecondWeapon == false)
+        {
+            isOnSecondWeapon = true;
+        }
+        else
+        {
+            isOnSecondWeapon = false;
         }
     }
 
     //first weapon
-    private void Shoot()
+    private void ShootFirstWeapon()
     {
-        Instantiate(this.weapon, this.transform.position, Quaternion.identity); 
+        Instantiate(this.weapon1, this.transform.position, Quaternion.identity); 
+    }
+
+    private void ShootSecondWeapon()
+    {
+        Instantiate(this.weapon2, this.transform.position, Quaternion.identity);
+
     }
 
     private void FixedUpdate()
